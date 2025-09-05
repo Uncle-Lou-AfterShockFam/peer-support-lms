@@ -1,27 +1,11 @@
 {
   "name": "peer-support-lms",
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/baserow/(.*)",
-      "dest": "/api/baserow"
-    }
-  ],
-  "env": {
-    "BASEROW_API_URL": "@baserow_api_url",
-    "BASEROW_TOKEN": "@baserow_token"
-  },
-  "functions": {
-    "app/api/**/*.ts": {
-      "maxDuration": 30
-    }
-  },
+  "framework": "nextjs",
   "regions": ["iad1"],
-  "framework": "nextjs"
+  "rewrites": [
+    {
+      "source": "/api/baserow/(.*)",
+      "destination": "/api/baserow"
+    }
+  ]
 }
